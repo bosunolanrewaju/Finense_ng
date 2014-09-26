@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="finense">
+	<head>
+		<title>Finense (Angular) | The platform where the bulls and the bears fight</title>
+		<meta charset="UTF-8">
+		<meta name="veiwport" content="width=device-width, initial-scale=1" >
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1" >
+		<script src="js/angular.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="logo">
+				<a href="index.html"><img src="img/logo.png" alt=""></a>
+			</div>
+			<div id="ads">
+				
+			</div>
+		</header>
+		<div id="wrapper" class="clearfix">
+			<div id="top-pane" ng-controller="TopController as topCtrl">
+				<div id="date-time">
+					<span id="date">
+						{{topCtrl.date_milli | date: 'medium'}}
+					</span>
+				</div>
+				<div id="scroll">
+					<marquee behavior="SCROLL" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"></marquee>
+				</div>
+				<div id="market-status" ng-style='topCtrl.marketStatus'>
+					<span></span>
+				</div>
+			</div>
+			<stock-symbols></stock-symbols>
+			<stock-page></stock-page>
+		</div>
+		<footer>
+			&copy; Andela Institute
+		</footer>
+		<script src="js/finense-angular.js"></script>
+		<script src="js/stock-page.js"></script>
+	</body>
+</html>
