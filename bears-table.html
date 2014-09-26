@@ -16,7 +16,7 @@
 			<td>{{stock.SYMBOL}}</td>
 			<td>{{stock.LAST_CLOSE}}</td>
 			<td>{{stock.TODAYS_CLOSE}}</td>
-			<td>{{stock.PERCENTAGE_CHANGE}}</td>
+			<td>{{(stock.PERCENTAGE_CHANGE / stock.LAST_CLOSE) * 100}}</td>
 		</tr>
 	</tbody>
 </table>

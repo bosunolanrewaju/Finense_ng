@@ -29,12 +29,15 @@
 				var isSelected = function(id){
 					console.log("clicked");
 					if(id !== 0){
-						$scope.showHome = false;
-						$scope.showStockPage = true;
+						$scope.show = true;
 					} else {
-						$scope.showHome = true;
-						$scope.showStockPage = false;
+						$scope.show = false;
 					}
+				}
+
+				$scope.showSection = function(){
+					console.log($scope.show)
+					return $scope.show;
 				}
 			}
 		}

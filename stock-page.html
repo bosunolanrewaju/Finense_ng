@@ -1,5 +1,5 @@
 {{api.id}}
-<section ng-hide="{{showHome===true}}">
+<section ng-hide="{{showSection}}">
 	<div id="chart">
 		<h2>All Share Index</h2>
 		<div id="asi_chart" width="800" height="400">
@@ -9,7 +9,7 @@
 	<gainers-table></gainers-table>
 	<losers-table></losers-table>
 </section>
-<section ng-hide="{{showStockPage===true}}">
+<section ng-show="{{showSection}}">
 	<div id="chart">
 		<h2>All Share Index</h2>
 		<div id="symbol_chart" width="800" height="400">
