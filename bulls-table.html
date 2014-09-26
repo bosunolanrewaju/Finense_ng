@@ -14,9 +14,9 @@
 		<tr ng-repeat="stock in gainerCtrl.stocks">
 			<td>{{stock.ID}}</td>
 			<td>{{stock.SYMBOL}}</td>
-			<td>{{stock.LAST_CLOSE}}</td>
-			<td>{{stock.TODAYS_CLOSE}}</td>
-			<td>{{(stock.PERCENTAGE_CHANGE / stock.LAST_CLOSE) * 100}}</td>
+			<td>{{stock.LAST_CLOSE | number:2}}</td>
+			<td>{{stock.TODAYS_CLOSE | number:2}}</td>
+			<td>{{(stock.PERCENTAGE_CHANGE / stock.LAST_CLOSE) * 100 | number:2}}</td>
 		</tr>
 	</tbody>
 </table>
