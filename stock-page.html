@@ -11,7 +11,7 @@
 </section>
 <section ng-show="show === true">
 	<div id="chart">
-		<h2>{{stockInfo.Symbol}} - {{stockInfo.CompanyName}}</h2>
+		<h2>{{stockInfo.Symbol}}({{stockInfo.StockPriceCur | currency}}) - {{stockInfo.CompanyName}}</h2>
 		<div id="symbol_chart" width="800" height="400">
 			
 		</div>
