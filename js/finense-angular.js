@@ -14,8 +14,8 @@
 					stock.symbols = data;
 				});
 
-				stock.symbolSelect = function(id){
-					StockPageAPI.isSelected(id);
+				stock.symbolSelect = function(symbol){
+					StockPageAPI.isSelected(symbol);
 				};
 
 			},

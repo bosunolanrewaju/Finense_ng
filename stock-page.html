@@ -11,7 +11,7 @@
 </section>
 <section ng-show="show === true">
 	<div id="chart">
-		<h2>All Share Index</h2>
+		<h2>{{stockInfo.Symbol}} - {{stockInfo.CompanyName}}</h2>
 		<div id="symbol_chart" width="800" height="400">
 			
 		</div>
@@ -26,47 +26,47 @@
 			</colgroup>
 			<tr>
 				<td>Company Name</td>
-				<td>Company Name</td>
+				<td>{{stockInfo.CompanyName}}</td>
 			</tr>
 			<tr>
 				<td>Symbol</td>
-				<td>Symbol</td>
+				<td>{{stockInfo.Symbol}}</td>
 			</tr>
 			<tr>
 				<td>Sector (Sub Sector)</td>
-				<td>Sector (Sub Sector)</td>
+				<td>{{stockInfo.Sector}}</td>
 			</tr>
 			<tr>
 				<td>Company Address</td>
-				<td>Company Address</td>
+				<td>{{stockInfo.CompanyAddress}}</td>
 			</tr>
 			<tr>
 				<td>Phone (Fax)</td>
-				<td>Phone (Fax)</td>
+				<td>{{stockInfo.Telephone}}</td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td>Email</td>
+				<td>{{stockInfo.Email}}</td>
 			</tr>
 			<tr>
 				<td>Website</td>
-				<td>Website</td>
+				<td>{{stockInfo.Website}}</td>
 			</tr>
 			<tr>
 				<td>Auditor</td>
-				<td>Auditor</td>
+				<td>{{stockInfo.Auditor}}</td>
 			</tr>
 			<tr>
 				<td>Registrar</td>
-				<td>Registrar</td>
+				<td>{{stockInfo.Registrars}}</td>
 			</tr>
 			<tr>
 				<td>Date Listed</td>
-				<td>Date Listed</td>
+				<td>{{stockInfo.DateListed}}</td>
 			</tr>
 			<tr>
 				<td>Board of Directors</td>
-				<td>Board of Directors</td>
+				<td>{{stockInfo.BoardOfDirectors}}</td>
 			</tr>
 		</tbody>
 	</table>
