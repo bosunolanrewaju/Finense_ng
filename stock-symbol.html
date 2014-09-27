@@ -1,7 +1,6 @@
 <div id="select-container">
-	<select name="stock-select" id="stock-select">
-		<option value="0">Select Stock Symbols</option>
-		<option ng-repeat="symbol in stockCtrl.symbols" value="{{symbol.Symbol}}">{{symbol.Symbol}}</option>
+	<select name="stock-select" id="stock-select" ng-model="symbol.Symbol" ng-change="stockCtrl.symbolSelect(symbol.Symbol.Symbol)" ng-options="symbol.Symbol for symbol in stockCtrl.symbols" >
+		<option value="">Select Stock Symbols</option>
 	</select>
 </div>
 <aside>

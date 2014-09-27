@@ -26,10 +26,11 @@
 
 				$scope.stockInfo = [];
 				var isSelected = function(symbol){
-					if(symbol !== 0){
-						$scope.show = true;
-					} else {
+					console.log(symbol);
+					if(symbol === 0 || symbol === undefined){
 						$scope.show = false;
+					} else {
+						$scope.show = true;
 					}
 
 					var config = {
