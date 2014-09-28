@@ -1,0 +1,22 @@
+<h2></h2>
+<table id="losers">
+<caption>The Bears (Losers)</caption>
+	<thead>
+	<tr>
+			<th>S/N</th>
+			<th>Symbol</th>
+			<th>Last Close(₦)</th>
+			<th>Today's Close(₦)</th>
+			<th>Change(₦)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="stock in loserCtrl.stocks">
+			<td>{{stock.ID}}</td>
+			<td>{{stock.SYMBOL}}</td>
+			<td>{{stock.LAST_CLOSE | number:2}}</td>
+			<td>{{stock.TODAYS_CLOSE | number:2}}</td>
+			<td>{{stock.PERCENTAGE_CHANGE | number: 2}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,72 @@
+<section ng-hide="show === true">
+	<div id="chart">
+		<h2>All Share Index</h2>
+		<div ng-controller="asiController" id="asi_chart" width="800" height="400">
+			<highchart config="asiChart"></highchart>
+		</div>
+	</div>
+	<gainers-table></gainers-table>
+	<losers-table></losers-table>
+</section>
+<section ng-show="show === true">
+	<div id="chart">
+		<h2>{{stockInfo.Symbol}}({{stockInfo.StockPriceCur | currency}}) - {{stockInfo.CompanyName}}</h2>
+		<div ng-controller="ChartController" id="symbol_chart" width="800" height="400">
+			<highchart config="stockChart"></highchart>
+		</div>
+	</div>
+	<h2></h2>
+	<table id="profile">
+	<caption>Company Profile</caption>
+		<tbody>
+			<colgroup span="2">
+				<col width="150">
+				<col>
+			</colgroup>
+			<tr>
+				<td>Company Name</td>
+				<td>{{stockInfo.CompanyName}}</td>
+			</tr>
+			<tr>
+				<td>Symbol</td>
+				<td>{{stockInfo.Symbol}}</td>
+			</tr>
+			<tr>
+				<td>Sector (Sub Sector)</td>
+				<td>{{stockInfo.Sector}}</td>
+			</tr>
+			<tr>
+				<td>Company Address</td>
+				<td>{{stockInfo.CompanyAddress}}</td>
+			</tr>
+			<tr>
+				<td>Phone (Fax)</td>
+				<td>{{stockInfo.Telephone}}</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td>{{stockInfo.Email}}</td>
+			</tr>
+			<tr>
+				<td>Website</td>
+				<td>{{stockInfo.Website}}</td>
+			</tr>
+			<tr>
+				<td>Auditor</td>
+				<td>{{stockInfo.Auditor}}</td>
+			</tr>
+			<tr>
+				<td>Registrar</td>
+				<td>{{stockInfo.Registrars}}</td>
+			</tr>
+			<tr>
+				<td>Date Listed</td>
+				<td>{{stockInfo.DateListed | date: 'MMM dd, yyyy'}}</td>
+			</tr>
+			<tr>
+				<td>Board of Directors</td>
+				<td>{{stockInfo.BoardOfDirectors}}</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
