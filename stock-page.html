@@ -1,9 +1,8 @@
-{{api.id}}
 <section ng-hide="show === true">
 	<div id="chart">
 		<h2>All Share Index</h2>
-		<div ng-controller="ChartController" id="asi_chart" width="800" height="400">
-			<highchart config="stockChart"></highchart>
+		<div ng-controller="asiController" id="asi_chart" width="800" height="400">
+			<highchart config="asiChart"></highchart>
 		</div>
 	</div>
 	<gainers-table></gainers-table>

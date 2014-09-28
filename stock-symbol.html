@@ -1,11 +1,14 @@
 <div id="select-container">
 	<select name="stock-select" id="stock-select" ng-model="symbol.Symbol" ng-change="stockCtrl.symbolSelect(symbol.Symbol.Symbol)" ng-options="symbol.Symbol for symbol in stockCtrl.symbols" >
-		<option value="">Select Stock Symbols</option>
+		<option ng-change="stockCtrl.symbolSelect(0)" value="">All Share Index</option>
 	</select>
 </div>
 <aside>
 	<h3>Stock Symbols</h3>
 	<ul id="stock-ul">
+		<li id="stock-li">
+			<a href="" ng-click="stockCtrl.symbolSelect(0)">All Share Index</a>
+		</li>
 		<li id="stock-li" ng-repeat="symbol in stockCtrl.symbols">
 			<a href="" ng-click="stockCtrl.symbolSelect(symbol.Symbol)">{{symbol.Symbol}}</a>
 		</li>
