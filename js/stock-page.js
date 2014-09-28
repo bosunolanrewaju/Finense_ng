@@ -77,8 +77,9 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'stock-page.html',
-			controller: function(StockPageAPI, $scope, $http, StockDataService){
+			controller: function(StockPageAPI, $scope, $http, StockDataService, $timeout){
 				$scope.api = StockPageAPI;
+				$scope.show = false;
 				$scope.dService = StockDataService.sharedObject
 				$scope.$watch(function(){
 					return $scope.api.symbol
@@ -88,11 +89,14 @@
 
 				$scope.stockInfo = [];
 				var isSelected = function(symbol){
-					if(symbol === 0 || symbol === undefined){
-						$scope.show = false;
-					} else {
-						$scope.show = true;
-					}
+					
+						if(symbol === 0 || symbol === undefined){
+							$scope.show = false;
+						} else {
+							$timeout(function(){$scope.show = true;}, 500);
+						}
+					
+					
 
 					var config = {
 						params: {
@@ -114,18 +118,24 @@
 	});
 
 	stockModule.controller('ChartController', ['$scope', "StockDataService", function($scope, StockDataService){
+		$scope.dataApi = StockDataService.sharedObject;
 			$scope.$watch(function(){
-				return StockDataService.sharedObject.getSymbol();
+				return $scope.dataApi.getSymbol();
 			}, function(){
-				StockDataService.sharedObject.fetchData().success(function(data){
-					$scope.stockChart = StockDataService.sharedObject.drawChart("symbol_chart", $scope.api.symbol, 1, data);
-				})
+				$scope.dataApi.fetchData().success(function(data){
+					$scope.stockChart = $scope.dataApi.drawChart("symbol_chart", $scope.api.symbol, 1, data);
+					$scope.show = true;
+					console.log($scope.show);
+				});
 			});
 	}]);
 
 	stockModule.controller('asiController', ['StockDataService', '$scope', function(StockDataService, $scope){
-		StockDataService.sharedObject.fetchData().success(function(data){
-			$scope.asiChart = StockDataService.sharedObject.drawChart("asi_chart", StockDataService.sharedObject.getSymbol(), 5, data.IndiciesData);
+		$scope.dataApi = StockDataService.sharedObject;
+		$scope.dataApi.fetchData().success(function(data){
+			$scope.asiChart = $scope.dataApi.drawChart("asi_chart", $scope.dataApi.getSymbol(), 5, data.IndiciesData);
+			$scope.show = false;
+			console.log($scope.show);
 		});		
 	}]);
 
