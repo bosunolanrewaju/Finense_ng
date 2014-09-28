@@ -48,30 +48,24 @@
 										backgroundColor: 'rgb(240,240,240)'
 									}
 								},
-
-								height: 400,
-
 					            rangeSelector : {
 					                selected : selected
 					            },
-
 					            title : {
 					                text : symbol === 0 ? "All Share Index" : symbol
 					            },
-
 					            series : [{
 					                name : symbol === 0 ? "ASI" : symbol,
 					                data : data
 					            }],
-
 					            xAxis: {
 						            type: 'datetime',
-						            title: {text: 'Years'}
+						            title: {text: 'Date'}
 						        },
-
 					            yAxis: {
-						            title: {text: 'Market Capitalization'}
-						        }
+						            title: {text: 'Market Value'}
+						        },
+						        loading: false
 							}
 						}
 					}
@@ -144,9 +138,5 @@
 		$http.get(base + "/statistics/ticker", config).success(function(data){
 			$scope.data = data;
 		});
-
-		$scope.marqueeWidth = function(){
-			// console.log(element[0].offsetWidth);
-		}
 	}])
 })();
