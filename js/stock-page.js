@@ -87,13 +87,12 @@
 				});
 
 				$scope.stockInfo = [];
-				var isSelected = function(symbol){
+				var isSelected = function(symbol){		
 					if(symbol === 0 || symbol === undefined){
 						$scope.show = false;
 					} else {
-						$scope.show = true;
+						$timeout(function(){$scope.show = true;}, 500);
 					}
-
 					var config = {
 						params: {
 							$filter: "Symbol eq '" + $scope.api.symbol + "'"
@@ -114,18 +113,20 @@
 	});
 
 	stockModule.controller('ChartController', ['$scope', "StockDataService", function($scope, StockDataService){
+		$scope.dataApi = StockDataService.sharedObject;
 			$scope.$watch(function(){
-				return StockDataService.sharedObject.getSymbol();
+				return $scope.dataApi.getSymbol();
 			}, function(){
-				StockDataService.sharedObject.fetchData().success(function(data){
-					$scope.stockChart = StockDataService.sharedObject.drawChart("symbol_chart", $scope.api.symbol, 1, data);
-				})
+				$scope.dataApi.fetchData().success(function(data){
+					$scope.stockChart = $scope.dataApi.drawChart("symbol_chart", $scope.api.symbol, 1, data);
+				});
 			});
 	}]);
 
 	stockModule.controller('asiController', ['StockDataService', '$scope', function(StockDataService, $scope){
-		StockDataService.sharedObject.fetchData().success(function(data){
-			$scope.asiChart = StockDataService.sharedObject.drawChart("asi_chart", StockDataService.sharedObject.getSymbol(), 5, data.IndiciesData);
+		$scope.dataApi = StockDataService.sharedObject;
+		$scope.dataApi.fetchData().success(function(data){
+			$scope.asiChart = $scope.dataApi.drawChart("asi_chart", $scope.dataApi.getSymbol(), 5, data.IndiciesData);
 		});		
 	}]);
 
