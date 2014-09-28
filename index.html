@@ -26,11 +26,15 @@
 						{{topCtrl.date_milli | date: 'medium'}}
 					</span>
 				</div>
-				<div id="scroll">
-					<marquee behavior="SCROLL" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"></marquee>
-				</div>
 				<div id="market-status" ng-style='topCtrl.marketStatus'>
 					<span></span>
+				</div>
+				<div id="scroll" ng-controller="MarqueeController">{{marqueeWidth()}}
+					<marquee behavior="SCROLL" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();">
+						<span ng-repeat="dat in data">
+							{{dat.SYMBOL}} {{dat.Value}} {{dat.PercChange}}%  | 
+						</span>
+					</marquee>
 				</div>
 			</div>
 			<stock-symbols></stock-symbols>

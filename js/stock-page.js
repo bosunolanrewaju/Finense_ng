@@ -22,18 +22,12 @@
 						getSymbol: function(){
 							return newSymbol;
 						},
-						setSymbol: function(symbol){
-							newSymbol = symbol;
-						},
 						set: function(symbol){
 							newSymbol = symbol;
-							// this.fetchData();
 						},
 						fetchData: function(){
 							if(newSymbol === 0){
 								var promise = $http.get(base + "/chartdata/ASI").success(function(data){
-									// newSymbol++;
-									console.log(newSymbol);
 									return  data.IndiciesData;
 								});
 							} else {
@@ -43,12 +37,8 @@
 							}
 							return promise;
 						},
-						getStockData: function(){
-							return stockData;
-						},
 
 						drawChart: function(container, symbol, selected, data){
-							console.log("drawn");
 							return {
 								options: {
 									chart: {
@@ -100,7 +90,6 @@
 					return $scope.api.symbol
 				}, function(){
 					isSelected($scope.api.symbol);
-					// $scope.dService.setSymbol($scope.api.symbol);
 				});
 
 				$scope.stockInfo = [];
@@ -142,8 +131,22 @@
 
 	stockModule.controller('asiController', ['StockDataService', '$scope', function(StockDataService, $scope){
 		StockDataService.sharedObject.fetchData().success(function(data){
-			console.log(data.IndiciesData);
 			$scope.asiChart = StockDataService.sharedObject.drawChart("asi_chart", StockDataService.sharedObject.getSymbol(), 5, data.IndiciesData);
 		});		
+	}]);
+
+	stockModule.controller('MarqueeController', ['$http','$scope', function($http, $scope, element){
+		var config = {
+			params: {
+				$filter: "TickerType eq 'EQUITIES'"
+			}
+		}
+		$http.get(base + "/statistics/ticker", config).success(function(data){
+			$scope.data = data;
+		});
+
+		$scope.marqueeWidth = function(){
+			// console.log(element[0].offsetWidth);
+		}
 	}])
 })();
