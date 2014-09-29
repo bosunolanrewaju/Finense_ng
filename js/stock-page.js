@@ -77,7 +77,7 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'stock-page.html',
-			controller: function(StockPageAPI, $scope, $http, StockDataService){
+			controller: function(StockPageAPI, $scope, $http, StockDataService, $timeout){
 				$scope.api = StockPageAPI;
 				$scope.dService = StockDataService.sharedObject
 				$scope.$watch(function(){
